@@ -5,7 +5,7 @@ import { Request, Response } from 'express';
  * Response with a simple ping
  */
 const simplePing = (req: Request, res: Response) => {
-    res.json({ msg: "ping" })
+    res.json({ msg: "pong" })
 }
 
 export { simplePing }
