@@ -12,7 +12,7 @@ import { validateToken } from "@/middlewares/tokenManager.middleware"
 export class App {
     // initializers
     private app: Application
-    private port = 3000
+    private port = 3001
     private apiVersion = "v1"
     private apiPaths = {
         ping: `/api/${this.apiVersion}/ping`,
