@@ -1,12 +1,9 @@
 // imports
-import { Router } from 'express';
+import { Router } from "express";
 // controllers
-import { sendSimpleEmail } from '@/controllers/mailer.controller';
+import { sendSimpleEmail } from "@/controllers/mailer.controller";
 
 // router
-export const mailerRouter = Router()
+export const mailerRouter = Router();
 
-mailerRouter.get("/", (req, res, next) => {
-    console.log("Driving through from middleware")
-    next()
-}, sendSimpleEmail)
+mailerRouter.get("/send-email", sendSimpleEmail);
