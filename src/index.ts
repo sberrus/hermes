@@ -5,8 +5,8 @@ import { DatabaseConnector } from "./models/database";
 const db = new DatabaseConnector();
 db.init();
 
-// const app = new App();
-// app.start();
+const app = new App();
+app.start();
 
 // todo
 // [ ] implement anti brute force strategies ** express-brute library could help.
