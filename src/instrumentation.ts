@@ -6,24 +6,24 @@ import { OTLPMetricExporter } from "@opentelemetry/exporter-metrics-otlp-proto";
 import { PeriodicExportingMetricReader } from "@opentelemetry/sdk-metrics";
 import dotenv from "dotenv";
 dotenv.config();
-const dynatraceTelemetryEndpoint = process.env.DYNATRACE_TELEMETRY_ENDPOINT;
-const dynatraceToken = process.env.DYNATRACE_TOKEN;
+const TELEMETRY_COLLECTOR_ENDPOINT = process.env.TELEMETRY_COLLECTOR_ENDPOINT;
+// const dynatraceToken = process.env.DYNATRACE_TOKEN;
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
     // optional - default url is http://localhost:4318/v1/traces
-    url: `${dynatraceTelemetryEndpoint}/v1/traces`,
-    // optional - collection of custom headers to be sent with each request, empty by default
-    headers: {
-      Authorization: `Api-Token ${dynatraceToken}`,
-    },
+    url: `${TELEMETRY_COLLECTOR_ENDPOINT}/v1/traces`,
+    // // optional - collection of custom headers to be sent with each request, empty by default
+    // headers: {
+    //   Authorization: `Api-Token ${dynatraceToken}`,
+    // },
   }),
   metricReader: new PeriodicExportingMetricReader({
     exporter: new OTLPMetricExporter({
-      url: `${dynatraceTelemetryEndpoint}/v1/metrics`, // url is optional and can be omitted - default is http://localhost:4318/v1/metrics
-      headers: {
-        Authorization: `Api-Token ${dynatraceToken}`,
-      }, // an optional object containing custom headers to be sent with each request
+      url: `${TELEMETRY_COLLECTOR_ENDPOINT}/v1/metrics`, // url is optional and can be omitted - default is http://localhost:4318/v1/metrics
+      // headers: {
+      //   Authorization: `Api-Token ${dynatraceToken}`,
+      // }, // an optional object containing custom headers to be sent with each request
     }),
   }),
   instrumentations: [

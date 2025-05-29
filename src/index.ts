@@ -1,9 +1,8 @@
 import { App } from "@/models/app";
 import { DatabaseConnector } from "./models/database";
 
-
-const db = new DatabaseConnector();
-db.init();
+// const db = new DatabaseConnector();
+// db.init();
 
 const app = new App();
 app.start();
